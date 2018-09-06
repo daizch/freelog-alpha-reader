@@ -1,0 +1,19 @@
+npm-debug.log
+*.swp
+.DS_Store
+node_modules/
+logs/
+coverage/
+.cache/
+yarn-error.log
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.iml
+*.ipr
+*.iws
+*.log

@@ -1,0 +1,256 @@
+.book-detail-wrap {
+  margin: 0 auto;
+  width: 990px;
+  font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+
+  a {
+    text-decoration: none;
+    color: #262626;
+    outline: 0;
+    &:hover {
+      color: #ed4259;
+    }
+  }
+
+  p {
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .clearfix{
+    &:after{
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+  }
+
+  .book-information {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    background: #fff;
+    height: 230px;
+    border: 2px solid rgba(0,0,0,.1);
+    border-bottom: none;
+    .book-img {
+      float: left;
+      width: 144px;
+      height: 192px;
+      margin: 20px 20px 0;
+      img {
+        width: 100%;
+        height: 100%;
+        transition: transform .3s ease-out;
+        color: #fcfcfa;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .book-info {
+      float: left;
+      width: 560px;
+      margin-top: 20px;
+      .intro {
+        font-size: 14px;
+        line-height: 20px;
+        overflow: hidden;
+        height: 20px;
+        margin-bottom: 11px;
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 38px;
+        font-weight: 700;
+        overflow: hidden;
+        height: 38px;
+        margin-bottom: 12px;
+        span {
+          font-size: 14px;
+          line-height: 20px;
+          margin-left: 20px;
+        }
+      }
+
+      .tag {
+        font-size: 0;
+        overflow: hidden;
+        height: 25px;
+        margin-bottom: 12px;
+        span {
+          font-size: 12px;
+          line-height: 22px;
+          display: inline-block;
+          overflow: hidden;
+          height: 22px;
+          margin-right: 12px;
+          padding: 0 10px;
+          text-align: center;
+          vertical-align: middle;
+          border-width: 1px;
+          border-style: solid;
+          border-radius: 15px;
+        }
+        .blue {
+          color: #3f5a93;
+          border-color: #9fadc9;
+        }
+      }
+    }
+  }
+
+  .content-nav-wrap {
+    margin-bottom: 34px;
+    border-bottom: 1px solid #e6e6e6;
+    .nav-wrap {
+      float: left;
+      li {
+        font-size: 18px;
+        line-height: 40px;
+        float: left;
+        overflow: hidden;
+        height: 40px;
+        padding: 0 21px;
+        text-align: center;
+        a {
+          display: block;
+          overflow: hidden;
+          max-height: 36px;
+          color: #a6a6a6;
+        }
+
+        &.active-tab {
+          line-height: 40px;
+          margin-bottom: -1px;
+          border-bottom: 2px solid #ed4259;
+          a {
+            color: #ed4259;
+          }
+        }
+      }
+    }
+  }
+
+  .book-content-intro-wrap {
+    .left-wrap {
+      width: 700px;
+      padding-bottom: 40px;
+      float: left;
+      .book-intro {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e6e6e6;
+        p {
+          font-size: 14px;
+          line-height: 28px;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .right-wrap {
+      width: 250px;
+      padding-top: 6px;
+      float: right;
+      .author-state {
+        padding-bottom: 9px;
+        text-align: center;
+        background: #f7f6f2;
+      }
+      .author-info {
+        width: 226px;
+        margin: 0 auto;
+        .author-photo {
+          position: relative;
+          z-index: 1;
+          width: 100px;
+          height: 100px;
+          margin: 0 auto 16px;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+          }
+        }
+
+        .author-name {
+          font-size: 18px;
+          line-height: 1;
+          position: relative;
+          overflow: hidden;
+          height: 22px;
+          margin-bottom: 8px;
+          text-align: center;
+        }
+        .author-intro-desc {
+          font-size: 12px;
+          line-height: 24px;
+          overflow: hidden;
+          max-height: 72px;
+        }
+        .info-wrap {
+          padding: 20px 0;
+        }
+      }
+    }
+  }
+
+  .catalog-content-wrap {
+    padding: 16px 0 0;
+    .volume {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      margin-bottom: 40px;
+      h3 {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 700;
+        overflow: hidden;
+        height: 24px;
+        padding-bottom: 11px;
+        border-bottom: 1px solid #666;
+        i {
+          font-family: Arail;
+        }
+      }
+
+      ul {
+        overflow: hidden;
+        width: 1050px;
+        &:after {
+          display: block;
+          content: ' ';
+          position: absolute;
+          z-index: 99;
+          width: 100%;
+          height: 1px;
+          bottom: 0;
+          background-color: #f8f8f8;
+        }
+
+        li {
+          font-size: 14px;
+          line-height: 40px;
+          float: left;
+          overflow: hidden;
+          width: 290px;
+          height: 40px;
+          padding-right: 60px;
+          border-bottom: 1px solid #ebebeb;
+          a {
+            float: left;
+            overflow: hidden;
+            max-width: 240px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
