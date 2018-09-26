@@ -24,13 +24,20 @@ function createLoader(loader) {
 
 var nodeId = window.__auth_info__.__auth_node_id__
 
+
+function handleErrorResponse(res){
+  window.FreelogApp.trigger('HANDLE_INVALID_RESPONSE', {
+    response: res
+  })
+}
+
 var onloadBookDetail = createLoader(function (callback) {
-  window.QI.fetch(`/v1/presentables?nodeId=${nodeId}&resourceType=json&tags=book`)
+  window.FreelogApp.QI.fetch(`/v1/presentables?nodeId=${nodeId}&resourceType=json&tags=book`)
     .then(res => res.json())
     .then(res => {
       if (res.errcode === 0) {
         var presentable = res.data[0]
-        window.QI.fetch(`/v1/auths/presentable/${presentable.presentableId}?nodeId=${nodeId}`)
+        window.FreelogApp.QI.fetch(`/v1/auths/presentable/${presentable.presentableId}?nodeId=${nodeId}`)
           .then(res => {
             var token = res.headers.get('freelog-sub-resource-auth-token')
             res.json().then(data => {
@@ -38,19 +45,19 @@ var onloadBookDetail = createLoader(function (callback) {
                 data.authorImg = `/api/v1/auths/presentable/subResource/${data.authorImg}?token=${token}`
                 callback(data)
               } else {
-                window.FreeLogApp.handleErrorResponse(res)
+                handleErrorResponse(res)
               }
             })
           })
       } else {
-        window.FreeLogApp.handleErrorResponse(res)
+        handleErrorResponse(res)
       }
     })
 });
 
 
 function loadPresentablesByTags(tags) {
-  return window.QI.fetch(`/v1/presentables?nodeId=${nodeId}&tags=${tags}`).then(res => res.json())
+  return window.FreelogApp.QI.fetch(`/v1/presentables?nodeId=${nodeId}&tags=${tags}`).then(res => res.json())
 }
 
 function resolveChapters(chapters) {
@@ -85,25 +92,25 @@ function resolveChapters(chapters) {
 
 
 var onloadChapters = createLoader(function (callback) {
-  window.QI.fetch(`/v1/presentables?nodeId=${nodeId}&tags=chapter`)
+  window.FreelogApp.QI.fetch(`/v1/presentables?nodeId=${nodeId}&tags=chapter`)
     .then(res => res.json())
     .then(res => {
       if (res.errcode === 0) {
         var data = resolveChapters(res.data)
         callback(data)
       } else {
-        window.FreeLogApp.handleErrorResponse(res)
+        handleErrorResponse(res)
       }
     })
 });
 
 function loadPresentableInfo(presentableId) {
-  return window.QI.fetch(`/v1/presentables/${presentableId}`).then(res => res.json())
+  return window.FreelogApp.QI.fetch(`/v1/presentables/${presentableId}`).then(res => res.json())
 }
 
 function requestPresentableData(presentableId) {
   var nodeId = window.__auth_info__.__auth_node_id__
-  return window.QI.fetch(`/v1/auths/presentable/${presentableId}?nodeId=${nodeId}`)
+  return window.FreelogApp.QI.fetch(`/v1/auths/presentable/${presentableId}?nodeId=${nodeId}`)
     .then(res => {
       var meta = decodeURIComponent(res.headers.get('freelog-meta'))
       var chapter

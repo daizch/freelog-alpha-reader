@@ -186,7 +186,7 @@
         onloadChapterContent(presentableId, disabledCache)
           .then(chapter => {
             if (chapter.error) {
-              chapter.errorInfo = window.FreeLogApp.getErrorInfo(chapter.error);
+              chapter.errorInfo = window.FreelogApp.getErrorInfo(chapter.error);
             }
 
             var findChapterIndex = this.chapters.findIndex(chapter => {
@@ -313,9 +313,13 @@
       errorHandler(chapter) {
         var contract = chapter.error.data.data.contract;
         var contractState = contract && contract.status
-        window.FreeLogApp.handleErrorResponse(chapter.error, (presentable) => {
-          if (presentable._contractStatus !== contractState) {
-            this.renderChapterContent(presentable.presentableId, true)
+
+        window.FreelogApp.trigger('HANDLE_INVALID_RESPONSE', {
+          response: chapter.error,
+          callback: (presentable) => {
+            if (presentable._contractStatus !== contractState) {
+              this.renderChapterContent(presentable.presentableId, true)
+            }
           }
         })
       }
