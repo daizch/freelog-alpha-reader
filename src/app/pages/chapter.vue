@@ -311,15 +311,14 @@
         window.scrollTo(0, 0)
       },
       errorHandler(chapter) {
+        var presentable = chapter.error.data.data.presentableInfo
         var contract = chapter.error.data.data.contract;
         var contractState = contract && contract.status
 
         window.FreelogApp.trigger('HANDLE_INVALID_RESPONSE', {
           response: chapter.error,
-          callback: (presentable) => {
-            if (presentable._contractStatus !== contractState) {
-              this.renderChapterContent(presentable.presentableId, true)
-            }
+          callback: () => {
+            this.renderChapterContent(presentable.targetId, true)
           }
         })
       }
