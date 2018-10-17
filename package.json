@@ -6,14 +6,14 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "publish": "freelog-cli publish beta -f ./dist/freelog-alpha-reader.js"
   },
   "keywords": [],
   "author": "zechengdai",
   "license": "MIT",
   "freelogConfig": {
-    "type": "widget",
-    "meta": {}
+    "type": "widget"
   },
   "devDependencies": {
     "@freelog/freelog-dev-server": "^0.0.10",

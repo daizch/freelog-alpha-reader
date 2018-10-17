@@ -2,7 +2,7 @@
   <div class="book-detail-wrap">
     <div class="book-information">
       <div class="book-img">
-        <img src="//qidian.qpic.cn/qdbimg/349573/118447/180">
+        <img :src="bookDetail.bookPoster || '//qidian.qpic.cn/qdbimg/349573/118447/180'">
       </div>
       <div class="book-info ">
         <h1>
